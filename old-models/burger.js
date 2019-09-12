@@ -12,8 +12,12 @@ var burger = {
   update: function(id, cb) {
     models.Burger.update({
       devoured: true
+    },
+    {
+      where: {
+        id: id
+      }
     }).then(cb);
-    
   }
 };
 
