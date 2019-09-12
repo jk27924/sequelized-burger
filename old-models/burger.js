@@ -1,19 +1,19 @@
-var orm = require("../config/orm");
+const models = require("../models");
 
 var burger = {
   all: function(cb) {
-    orm.all("burgers", function(res) {
-      cb(res);
-    });
+    models.Burger.findAll({}).then(cb);
   },
   create: function(name, cb) {
-    orm.create("burgers", ["burger_name", "devoured"], [name, false], cb);
+    models.Burger.create({ 
+      "burger_name": name
+    }).then(cb);
   },
   update: function(id, cb) {
-    var condition = "id=" + id;
-    orm.update("burgers", {
+    models.Burger.update({
       devoured: true
-    }, condition, cb);
+    }).then(cb);
+    
   }
 };
 

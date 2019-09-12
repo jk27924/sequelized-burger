@@ -14,5 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   
+    Burger.sync({force: true})
+
     return Burger;
   }
